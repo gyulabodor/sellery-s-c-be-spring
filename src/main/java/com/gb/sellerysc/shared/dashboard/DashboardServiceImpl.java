@@ -1,9 +1,6 @@
 package com.gb.sellerysc.shared.dashboard;
 
-import com.gb.sellerysc.expense.ExpenseCreateRequest;
-import com.gb.sellerysc.expense.ExpenseData;
-import com.gb.sellerysc.expense.ExpenseDeleteRequest;
-import com.gb.sellerysc.expense.ExpenseToPayService;
+import com.gb.sellerysc.expense.*;
 import com.gb.sellerysc.salary.SalaryCreateRequest;
 import com.gb.sellerysc.salary.SalaryData;
 import com.gb.sellerysc.salary.SalaryDeleteRequest;
@@ -19,7 +16,17 @@ public class DashboardServiceImpl implements DashboardService{
     private ExpenseToPayService expenseToPayService;
     private CustomerService customerService;
 
+    private ExpenseService expenseService;
 
+    public DashboardServiceImpl(SalaryService salaryService,
+                                ExpenseToPayService expenseToPayService,
+                                CustomerService customerService,
+                                ExpenseService expenseService) {
+        this.salaryService = salaryService;
+        this.expenseToPayService = expenseToPayService;
+        this.customerService = customerService;
+        this.expenseService = expenseService;
+    }
 
     @Override
     public void setMainSection(SectionTypeEnum sectionType) {
