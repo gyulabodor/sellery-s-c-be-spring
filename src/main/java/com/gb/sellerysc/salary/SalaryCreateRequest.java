@@ -15,4 +15,5 @@ public class SalaryCreateRequest {
     private CurrencyEnum currency;
     private FrequencyEnum frequency;
     private ProcessingDateCreateRequest processingDate;
+    private Long customerId;
 }

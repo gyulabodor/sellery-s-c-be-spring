@@ -20,7 +20,5 @@ public class SalaryServiceImpl implements SalaryService{
     }
 
     @Override
-    public SalaryData saveSalary(SalaryCreateRequest salaryCreateRequest) {
-        return null;
-    }
+    public SalaryData saveSalary(SalaryCreateRequest salaryCreateRequest) { return null; }
 }
