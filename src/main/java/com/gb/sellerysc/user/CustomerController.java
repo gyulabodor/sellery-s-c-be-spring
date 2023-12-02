@@ -7,17 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/client")
-public class ClientController {
+@RequestMapping("/customer")
+public class CustomerController {
 
-    private ClientService clientService;
+    private CustomerService customerService;
 
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<ClientInfo> fetchClientInfo(@PathVariable Long id){
-        return ResponseEntity.ok(clientService.fetchClientInfo(id));
+    public ResponseEntity<CustomerData> fetchClientInfo(@PathVariable Long id){
+        return ResponseEntity.ok(customerService.fetchClientInfo(id));
     }
+
 }
