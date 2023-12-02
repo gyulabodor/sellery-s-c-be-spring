@@ -1,6 +1,7 @@
 package com.gb.sellerysc.expense;
 
 import com.gb.sellerysc.date.ProcessingDate;
+import com.gb.sellerysc.shared.utils.PaymentTypeEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,4 +24,7 @@ public class ExpenseToPay {
     private ProcessingDate processingDate;
     private Integer numberOfPayment;
     private Boolean payed;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PaymentTypeEnum paymentType;
 }
