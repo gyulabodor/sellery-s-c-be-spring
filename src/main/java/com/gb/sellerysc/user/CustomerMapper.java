@@ -9,4 +9,6 @@ public interface CustomerMapper {
     CustomerMapper MAPPER = Mappers.getMapper(CustomerMapper.class);
 
     CustomerData customerToCustomerData(Customer customer);
+
+    Customer customerCreateRequestToCustomer(CustomerCreateRequest customerCreateRequest);
 }

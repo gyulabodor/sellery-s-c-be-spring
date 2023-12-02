@@ -17,6 +17,10 @@ public class CustomerData {
 
     private Long id;
 
+    private String username;
+
+    private String email;
+
     private List<ExpenseData> expenseList;
 
     private List<SalaryData> salaryList;

@@ -19,6 +19,12 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String email;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Expense> expenseList;
 

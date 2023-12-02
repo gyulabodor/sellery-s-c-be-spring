@@ -1,5 +1,6 @@
 package com.gb.sellerysc.date;
 
+import com.gb.sellerysc.shared.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,14 +17,14 @@ public class ProcessingDateServiceImpl implements ProcessingDateService{
         this.processingDateMapper =processingDateMapper;
     }
     @Override
-    public ProcessingDateData fetchProcessingDate(ProcessingDateFindRequest processingDateFindRequest) {
+    public ProcessingDateData fetchProcessingDate(ProcessingDateFindRequest processingDateFindRequest) throws NotFoundException {
         Optional<ProcessingDate> processingDate = Optional.ofNullable(processingDateRepository.findByYearAndMonthAndDay(
                 processingDateFindRequest.getYear(),
                 processingDateFindRequest.getMonth(),
                 processingDateFindRequest.getDay()
         ));
         if (!processingDate.isPresent()){
-            return null;
+            throw new NotFoundException("PROCESSING_DATE_NOT_FOUND");
         }
         return processingDateMapper.processingDateToProcessingDateData(processingDate.get());
     }
