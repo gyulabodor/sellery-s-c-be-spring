@@ -17,11 +17,16 @@ public class ProcessingDate {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Integer year;
+
     private Integer month;
+
     private Integer day;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ExpenseToPay> expenseToPayList;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Salary> salaryList;
 }
