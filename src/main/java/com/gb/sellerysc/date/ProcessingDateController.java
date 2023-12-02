@@ -1,5 +1,6 @@
 package com.gb.sellerysc.date;
 
+import com.gb.sellerysc.shared.exception.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,17 +8,18 @@ import java.util.List;
 @RestController
 @RequestMapping("date")
 public class ProcessingDateController {
+
     private ProcessingDateService processingDateService;
-private ProcessingDateMapper processingDateMapper;
-    public ProcessingDateController(ProcessingDateService processingDateService,ProcessingDateMapper processingDateMapper) {
+
+    public ProcessingDateController(ProcessingDateService processingDateService) {
         this.processingDateService = processingDateService;
-        this.processingDateMapper=processingDateMapper;
     }
 
     @GetMapping
-    public ResponseEntity<ProcessingDateData> fetchProcessingDate(@RequestBody ProcessingDateFindRequest processingDateFindRequest){
+    public ResponseEntity<ProcessingDateData> fetchProcessingDate(@RequestBody ProcessingDateFindRequest processingDateFindRequest) throws NotFoundException {
         return ResponseEntity.ok(processingDateService.fetchProcessingDate(processingDateFindRequest));
     }
+
     @PostMapping
     public ResponseEntity<ProcessingDateData> saveProcessingDate(@RequestBody ProcessingDateCreateRequest processingDateCreateRequest){
         return ResponseEntity.ok(processingDateService.saveProcessingDate(processingDateCreateRequest));
