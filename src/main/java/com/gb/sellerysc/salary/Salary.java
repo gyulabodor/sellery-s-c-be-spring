@@ -19,15 +19,19 @@ public class Salary {
     private Long id;
 
     private Long amount;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CurrencyEnum currency;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FrequencyEnum frequency;
+
     @ManyToOne
     @JoinColumn(name = "processing_date_id", nullable = false)
     private ProcessingDate processingDate;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private Customer user;

@@ -17,13 +17,18 @@ public class ExpenseToPay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "expense_id", nullable = false)
     private Expense expense;
+
     @ManyToOne
     private ProcessingDate processingDate;
+
     private Integer numberOfPayment;
+
     private Boolean payed;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private PaymentTypeEnum paymentType;
