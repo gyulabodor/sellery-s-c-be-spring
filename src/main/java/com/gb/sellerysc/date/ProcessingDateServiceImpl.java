@@ -37,9 +37,16 @@ public class ProcessingDateServiceImpl implements ProcessingDateService{
     }
 
     @Override
-    public List<ProcessingDateData> searchProcessingDate(ProcessingDateFindRequest processingDateFindRequest) {
+    public List<ProcessingDateData> fetchProcessingDateListByMonth(ProcessingDateFindRequest processingDateFindRequest) {
         return processingDateMapper.processingDateListToProcessingDateDataList(processingDateRepository.findAllByYearAndMonth(
-                processingDateFindRequest.getYear(),processingDateFindRequest.getMonth()
+                processingDateFindRequest.getYear(), processingDateFindRequest.getMonth()
+        ));
+    }
+
+    @Override
+    public List<ProcessingDateData> fetchProcessingDateListByYear(ProcessingDateFindRequest processingDateFindRequest) {
+        return processingDateMapper.processingDateListToProcessingDateDataList(processingDateRepository.findAllByYear(
+                processingDateFindRequest.getDay()
         ));
     }
 }

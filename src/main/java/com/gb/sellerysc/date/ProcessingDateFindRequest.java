@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ProcessingDateFindRequest {
     private Integer year;
     private Integer month;

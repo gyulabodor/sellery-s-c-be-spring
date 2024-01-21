@@ -9,12 +9,11 @@ import java.util.List;
 @RequestMapping("date")
 public class ProcessingDateController {
 
-    private ProcessingDateService processingDateService;
+    private final ProcessingDateService processingDateService;
 
     public ProcessingDateController(ProcessingDateService processingDateService) {
         this.processingDateService = processingDateService;
     }
-
     @GetMapping
     public ResponseEntity<ProcessingDateData> fetchProcessingDate(@RequestBody ProcessingDateFindRequest processingDateFindRequest) throws NotFoundException {
         return ResponseEntity.ok(processingDateService.fetchProcessingDate(processingDateFindRequest));
@@ -26,7 +25,22 @@ public class ProcessingDateController {
     }
 
     @GetMapping("{year}/{month}")
-    public ResponseEntity<List<ProcessingDateData>> fetchProcessingDate(@PathVariable Integer year, @PathVariable Integer month){
-        return ResponseEntity.ok(processingDateService.searchProcessingDate(new ProcessingDateFindRequest(year,month,0)));
+    public ResponseEntity<List<ProcessingDateData>> searchProcessingDateListByMonth(@PathVariable Integer year, @PathVariable Integer month){
+        return ResponseEntity.ok(processingDateService.fetchProcessingDateListByMonth(
+                ProcessingDateFindRequest
+                        .builder()
+                        .year(year)
+                        .month(month)
+                        .build()
+        ));
+    }
+    @GetMapping("{year}")
+    public ResponseEntity<List<ProcessingDateData>> searchProcessingDateListByYear(@PathVariable Integer year){
+        return ResponseEntity.ok(processingDateService.fetchProcessingDateListByYear(
+                ProcessingDateFindRequest
+                        .builder()
+                        .year(year)
+                        .build()
+        ));
     }
 }

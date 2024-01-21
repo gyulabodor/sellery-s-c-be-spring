@@ -2,6 +2,8 @@ package com.gb.sellerysc.user;
 
 import com.gb.sellerysc.shared.exception.BadRequestException;
 import com.gb.sellerysc.shared.exception.NotFoundException;
+import com.gb.sellerysc.shared.utils.MainSectionUpdateRequest;
+import com.gb.sellerysc.shared.utils.SectionTypeEnum;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,8 +11,8 @@ import java.util.Optional;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private CustomerRepository customerRepository;
-    private CustomerMapper customerMapper;
+    private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     public CustomerServiceImpl(CustomerRepository customerRepository,
                                CustomerMapper customerMapper) {
@@ -47,5 +49,22 @@ public class CustomerServiceImpl implements CustomerService {
                         customerMapper.customerCreateRequestToCustomer(customerCreateRequest)
                 )
         );
+    }
+
+    @Override
+    public CustomerData updateMainSection(MainSectionUpdateRequest mainSectionUpdateRequest, SectionTypeEnum section) throws NotFoundException, BadRequestException {
+
+       Optional<Customer> customerFromDb = customerRepository.findById(mainSectionUpdateRequest.getCustomerId());
+
+       if (!customerFromDb.isPresent()){
+           throw new NotFoundException("CUSTOMER_NOT_FOUND_WITH_ID_"+ mainSectionUpdateRequest.getCustomerId());
+       }
+
+       Customer customer = customerFromDb.get();
+        if (customer.getMainSection() != mainSectionUpdateRequest.getUpdatedSection()){
+            customer.setMainSection(mainSectionUpdateRequest.getUpdatedSection());
+        }
+
+        return customerMapper.customerToCustomerData(customerRepository.save(customer));
     }
 }

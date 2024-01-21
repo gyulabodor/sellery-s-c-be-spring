@@ -3,9 +3,11 @@ import com.gb.sellerysc.shared.exception.NotFoundException;
 
 import java.util.List;
 public interface ProcessingDateService {
-    public ProcessingDateData fetchProcessingDate(ProcessingDateFindRequest processingDateFindRequest) throws NotFoundException;
+    ProcessingDateData fetchProcessingDate(ProcessingDateFindRequest processingDateFindRequest) throws NotFoundException;
 
-    public ProcessingDateData saveProcessingDate(ProcessingDateCreateRequest processingDateCreateRequest);
+    ProcessingDateData saveProcessingDate(ProcessingDateCreateRequest processingDateCreateRequest);
 
-    public List<ProcessingDateData> searchProcessingDate(ProcessingDateFindRequest processingDateFindRequest);
+    List<ProcessingDateData> fetchProcessingDateListByMonth(ProcessingDateFindRequest processingDateFindRequest);
+
+    List<ProcessingDateData> fetchProcessingDateListByYear(ProcessingDateFindRequest processingDateFindRequest);
 }

@@ -7,4 +7,5 @@ import java.util.List;
 public interface ProcessingDateRepository extends JpaRepository<ProcessingDate, Long> {
     ProcessingDate findByYearAndMonthAndDay(Integer year,Integer month, Integer day);
     List<ProcessingDate> findAllByYearAndMonth(Integer year,Integer month);
+    List<ProcessingDate> findAllByYear(Integer year);
 }
