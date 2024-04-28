@@ -16,4 +16,6 @@ public class CustomerCreateRequest {
 
     private SectionTypeEnum mainSection;
 
+    private String passwordHash;
+
 }
