@@ -3,16 +3,12 @@ package com.gb.sellerysc.expense;
 import com.gb.sellerysc.date.ProcessingDate;
 import com.gb.sellerysc.shared.utils.PaymentTypeEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Entity
 public class ExpenseToPay {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

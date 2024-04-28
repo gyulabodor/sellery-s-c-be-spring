@@ -4,13 +4,12 @@ import com.gb.sellerysc.shared.utils.CurrencyEnum;
 import com.gb.sellerysc.shared.utils.FrequencyEnum;
 import com.gb.sellerysc.user.Customer;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.List;
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor
 @Entity
 public class Expense {
     @Id

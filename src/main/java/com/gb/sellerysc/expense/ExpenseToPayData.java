@@ -1,6 +1,6 @@
 package com.gb.sellerysc.expense;
 
-import com.gb.sellerysc.date.ProcessingDateData;
+import com.gb.sellerysc.date.ProcessingDateInParentData;
 import lombok.*;
 
 @Data
@@ -9,5 +9,5 @@ import lombok.*;
 public class ExpenseToPayData {
     private Long id;
     private ExpenseData expense;
-    private ProcessingDateData processingDate;
+    private ProcessingDateInParentData processingDate;
 }
